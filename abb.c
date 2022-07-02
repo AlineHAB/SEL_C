@@ -122,13 +122,5 @@ void in_ordem(PEDIDO *aux){
 }
 
 
-int main(){
-
-    id();
-    insert_dados();
-
-
-return 0;
-}
 
 
