@@ -17,9 +17,11 @@ int main(){
         scanf("%d", &resp);
         if(resp == 1){
 
-              id();
+              system("clear");
               insert_dados();
-              void add_abb(int id, char *nome_aluno, int matricula, char *descricao);
+              printf("gerando id:\n");
+              id();
+              printf("\n\n");
 //-----------------------------------------------------------------------------------
 
         /*}else if(resp == 2){
