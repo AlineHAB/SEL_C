@@ -27,7 +27,7 @@ int sectr_tam = 8;
 
 int verificador(char cpf[100], char senha[100]) {
     if (sectr_ini -> cpf == cpf && sectr_ini -> senha == senha) {
-        printf("deubom");
+        return 1;
     }
 
     else if (sectr_fim -> cpf == cpf && sectr_fim -> senha == senha) {
