@@ -5,14 +5,14 @@
 
 
 int id(){
-    int number;
-    int lower = 0;
-    int upper = 10000;
+    int numero;
+    int min = 0;
+    int max = 10000;
 
     srand(time(NULL));
 
-    number = (rand() % (lower + upper * 3))+ upper;
+    numero = (rand() % (min + max * 3))+ max;
       
 
-      return number;
+      return numero;
 };
