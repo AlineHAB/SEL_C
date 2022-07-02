@@ -19,7 +19,7 @@ int main(){
 
               id();
               insert_dados();
-
+              void add_abb(int id, char *nome_aluno, int matricula, char *descricao);
 //-----------------------------------------------------------------------------------
 
         /*}else if(resp == 2){
