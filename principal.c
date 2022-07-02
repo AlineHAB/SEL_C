@@ -16,11 +16,11 @@ int main(){
         printf("Digite a funcionalidade desejada:");
         scanf("%d", &resp);
         if(resp == 1){
-
+            
               system("clear");
-              insert_dados();
               printf("gerando id:\n");
               id();
+              insert_dados();
               printf("\n\n");
 //-----------------------------------------------------------------------------------
 
