@@ -2,30 +2,20 @@
 #include <stdlib.h>
 #include "Identificador.h"
 
-typedef struct Pedido{
-
+typedef struct Vertice{
+   
     //Dados iniciais da encomenda de um livro
     int id; //identificador
     char * nome_aluno;
     int matricula;
     char * descricao;
-
+    
     //mecanismo p/ unir nos!
-    struct PEDIDO * esq;
-    struct PEDIDO * dir;
-}PEDIDO;
+    struct Vertice * esq;
+    struct Vertice * dir;
+}VERTICE;
 
-typedef struct no {
-
-    struct NO *prox;
-}NO;
-
-
-NO *inicio = NULL;
-NO *fim = NULL;
-int tam = 0;
-PEDIDO * raiz = NULL;
-
+VERTICE * raiz = NULL;
 
 
 
@@ -48,8 +38,9 @@ void insert_dados(){
 
 }
 
-PEDIDO* buscar(int id, PEDIDO *aux){
 
+VERTICE* buscar(int id, VERTICE *aux){
+    
     if(aux != NULL){
         if(aux->id == id){
             return aux;
@@ -74,20 +65,20 @@ PEDIDO* buscar(int id, PEDIDO *aux){
 
 void add_abb(int id, char *nome_aluno, int matricula, char *descricao){
 
-    PEDIDO* aux = buscar(id, raiz);
-
+    VERTICE* aux = buscar(id, raiz);
+    
     if(aux != NULL && aux->id == id){
         printf("Insercao invalida!\n");
     }else{
-
-        PEDIDO* novo = malloc(sizeof(PEDIDO));
+        
+        VERTICE* novo = malloc(sizeof(VERTICE));
         novo->id = id;
         novo->nome_aluno = nome_aluno;
         novo->matricula = matricula;
         novo->descricao = descricao;
         novo->esq = NULL;
         novo->dir = NULL;
-
+        
         if(aux == NULL){//arvore esta vazia
             raiz = novo;
         }else{
@@ -101,8 +92,8 @@ void add_abb(int id, char *nome_aluno, int matricula, char *descricao){
 }
 
 
-void in_ordem(PEDIDO *aux){
-
+void in_ordem(VERTICE *aux){
+    
     if(aux->esq != NULL){
         in_ordem(aux->esq);
     }
@@ -115,14 +106,14 @@ void in_ordem(PEDIDO *aux){
         }
 }
 
-
-void remover_abb(int id, PEDIDO * raiz){
-    
+void remover_abb(int id, VERTICE * raiz){
+    VERTICE* aux = buscar(id, raiz);
     if(raiz != NULL){
         if(raiz->id == id){///Encontrou o pacote
            raiz->dir->esq=raiz->esq;
             raiz->esq->dir=raiz->dir;
             free(raiz);
+            printf("Remoção realizada com sucesso!\n");
         }else if(id < raiz->id){///O pacote procurado é menor
             if(raiz->esq != NULL){
                 remover_abb(id, raiz->esq);
