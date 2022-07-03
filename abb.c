@@ -27,13 +27,19 @@ PEDIDO * raiz = NULL;
 
 
 int id(){
-    int num;
+    /*int num;
     int min = 0;
-    int max = 1000;
+    int max = 99;
 
     srand(time(NULL));
 
     num = (rand() % (min + max * 3))+ max;
+    printf("%d\n", num);
+    */
+
+    int num;
+    srand(time(NULL));
+    num = rand() % 100;
     printf("%d\n", num);
 
 }
@@ -120,7 +126,6 @@ void in_ordem(PEDIDO *aux){
         in_ordem(aux->dir);
         }
 }
-
 
 
 
