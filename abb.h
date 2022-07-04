@@ -4,13 +4,12 @@
 
 typedef struct Vertice{
    
-    //Dados iniciais da encomenda de um livro
-    int id; //identificador
+    
+    int id;
     char * nome_aluno;
     int matricula;
     char * descricao;
     
-    //mecanismo p/ unir nos!
     struct Vertice * esq;
     struct Vertice * dir;
 }VERTICE;
@@ -25,14 +24,14 @@ void insert_dados(){
     int id_gerado = id();
     printf("Digite o nome do aluno:\n");
     char * nome = malloc(sizeof(char));
-    scanf(" %[^\n]s", nome);
+    scanf("%[^\n]s ", nome);
     //... matricula e descricao..*/
     printf("matricula: \n");
     int *matricula = malloc(sizeof(int));
     scanf("%d", &matricula);
     printf("Descrição: \n");
     char * descricao = malloc(sizeof(char));
-    scanf(" %[^\n]s", descricao);
+    scanf("\n %[^\n]s", descricao);
     
     add_abb(id_gerado,nome,matricula,descricao);
 
