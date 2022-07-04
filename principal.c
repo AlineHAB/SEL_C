@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "abb.h"
-//#include "fila.h"
-//#include "sec_e_transp.h"
+#include "filaL.h"
+#include "sec_e_transp.h"
 
 
 
