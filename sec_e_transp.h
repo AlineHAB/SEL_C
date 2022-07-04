@@ -6,7 +6,7 @@ typedef struct sec_transp{
     char cpf[100];
     char senha[100];
 
-    //necessario um campo que garanta que e um secretario ou transportador, por equanto vou deixar 1 para secretario e 2 para transportador
+
     int identificador;
     struct sec_transp *prox;
 }SEC_TR;
@@ -25,19 +25,38 @@ SEC_TR * sectr_ini = &sec1;
 SEC_TR * sectr_fim = &transp5;
 int sectr_tam = 8;
 
-int verificador(char cpf[100], char senha[100]) {
-    if (strcmp(sectr_ini ->cpf, cpf) == 0 && strcmp(sectr_ini ->senha, senha) == 0) {
+int verificador_secretario(char cpf[100], char senha[100]) {
+    if (strcmp(sectr_ini ->cpf, cpf) == 0 && strcmp(sectr_ini ->senha, senha) == 0 && sectr_ini -> identificador == 1) {
         return 1;
     }
 
-    else if (strcmp(sectr_fim ->cpf, cpf) == 0 && strcmp(sectr_fim ->senha, senha) == 0) {
+    else if (strcmp(sectr_fim ->cpf, cpf) == 0 && strcmp(sectr_fim ->senha, senha) == 0  && sectr_ini -> identificador == 1) {
         return 1;
     }
 
     else {
         SEC_TR *aux = sectr_ini;
         for (int i = 0; i < sectr_tam; i++) {
-            if (strcmp(aux -> cpf, cpf) == 0 && strcmp(aux -> senha, senha) == 0) {
+            if (strcmp(aux -> cpf, cpf) == 0 && strcmp(aux -> senha, senha) == 0  && sectr_ini -> identificador == 1) {
+                return 1;
+            }
+
+            else {
+                aux = aux -> prox;
+            }
+        }
+    }
+}
+
+int verificador_transportador(char cpf[100], char senha[100]) {
+    if (strcmp(sectr_fim ->cpf, cpf) == 0 && strcmp(sectr_fim ->senha, senha) == 0  && sectr_ini -> identificador == 2) {
+        return 1;
+    }
+
+    else {
+        SEC_TR *aux = sectr_ini;
+        for (int i = 0; i < sectr_tam; i++) {
+            if (strcmp(aux -> cpf, cpf) == 0 && strcmp(aux -> senha, senha) == 0  && sectr_ini -> identificador == 2) {
                 return 1;
             }
 
