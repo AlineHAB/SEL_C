@@ -16,7 +16,7 @@ typedef struct no{
    
     PEDIDO *p;
     
-    //mecanismo p/ unir nos!
+   
     struct no * prox;
 }No;
 
@@ -39,7 +39,7 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
         novo->prox = NULL;
     
     
-        if(inicio == NULL){ //fila vazia
+        if(inicio == NULL){ 
             inicio = novo;
             fim = novo;
             tam++;
@@ -87,7 +87,7 @@ void imprimir(){
 PEDIDO remover_fila(){
     PEDIDO pedido;
         //remover!
-        if(inicio != NULL){ //remover do antigo inicio da lista!
+        if(inicio != NULL){
             
             No *lixo = inicio;
             inicio = inicio->prox;
