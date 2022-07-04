@@ -24,9 +24,7 @@ int main(){
             system("clear");
             insert_dados();
             printf("\n\n");
-              
-        
-//-----------------------------------------------------------------------------------
+       
             }else if(resp == 2){
             //remover uma encomenda de livro da ABB (id)
             //para remover eu preciso:
