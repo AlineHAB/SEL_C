@@ -43,10 +43,7 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
             inicio = novo;
             fim = novo;
             tam++;
-        }else{ //adiciona de acordo com a prioridade! :D
-            //modificar!
-            //prioridade numeros de 0 a 100
-            //se o numero for menor que 100 ele entra no inicio; 
+        }else{
             if (novo -> p -> prioridade == 0) {
                 fim -> prox = novo;
                 fim = novo;
@@ -62,9 +59,10 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
             else {
                 No * aux = inicio;
                 for (int i = 0; i < tam - 1; i++) {
-                    if (prioridade < aux -> prox -> p -> prioridade) {
+                    if (prioridade > aux -> prox -> p -> prioridade) {
                         novo -> prox = aux -> prox;
-                        aux -> prox -> prox = novo;
+                        //novo -> prox = aux -> prox;
+                        aux -> prox = novo;
                         tam++;
                         break;
                     } 
