@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_PRIORIDADE 100
 
 
 typedef struct pedido{
@@ -46,11 +47,34 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
             //modificar!
             //prioridade numeros de 0 a 100
             //se o numero for menor que 100 ele entra no inicio; 
-          
-            fim->prox = novo;
-            fim = novo;
-            tam++;
+            if (novo -> p -> prioridade < inicio -> p -> prioridade) {
+                novo -> prox = inicio;
+                inicio = novo;
+                tam++;
+            }
+            
+            else if (prioridade == MAX_PRIORIDADE) {
+                fim->prox = novo;
+                fim = novo;
+                tam++;
+            }
+
+            else {
+                No * aux = inicio;
+                for (int i = 0; i < tam - 1; i++) {
+                    if (prioridade > aux -> prox -> p -> prioridade) {
+                        novo -> prox = aux -> prox;
+                        aux -> prox = novo;
+                        tam++;
+                        break;
+                    } 
+                    else {
+                        aux = aux -> prox;
+                    }
+
+            }
         }
+    }
 }
 
 
