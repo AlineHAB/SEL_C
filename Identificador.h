@@ -4,7 +4,7 @@
 
 
 
-identificador(){
+int identificador(){
   int id; 
   int sort_id =0 ;
   srand(time(NULL));
