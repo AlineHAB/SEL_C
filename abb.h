@@ -1,15 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Identificador.h"
 
 typedef struct Vertice{
    
     
-    int id;
+    int id; 
     char * nome_aluno;
     int matricula;
     char * descricao;
-    
+   
     struct Vertice * esq;
     struct Vertice * dir;
 }VERTICE;
@@ -18,24 +16,7 @@ VERTICE * raiz = NULL;
 
 
 
-void insert_dados(){
-    
-    printf("gerando id:\n");
-    int id_gerado = id();
-    printf("Digite o nome do aluno:\n");
-    char * nome = malloc(sizeof(char));
-    scanf("%[^\n]s ", nome);
-    //... matricula e descricao..*/
-    printf("matricula: \n");
-    int *matricula = malloc(sizeof(int));
-    scanf("%d", &matricula);
-    printf("Descrição: \n");
-    char * descricao = malloc(sizeof(char));
-    scanf("\n %[^\n]s", descricao);
-    
-    add_abb(id_gerado,nome,matricula,descricao);
 
-}
 
 
 VERTICE* buscar(int id, VERTICE *aux){
@@ -78,7 +59,7 @@ void add_abb(int id, char *nome_aluno, int matricula, char *descricao){
         novo->esq = NULL;
         novo->dir = NULL;
         
-        if(aux == NULL){//arvore esta vazia
+        if(aux == NULL){
             raiz = novo;
         }else{
             if(id < aux->id){
@@ -104,30 +85,73 @@ void in_ordem(VERTICE *aux){
         in_ordem(aux->dir);
         }
 }
-
-void remover_abb(int id, VERTICE * raiz){
-    VERTICE* aux = buscar(id, raiz);
-    if(raiz != NULL){
-        if(raiz->id == id){///Encontrou o pacote
-           raiz->dir->esq=raiz->esq;
-            raiz->esq->dir=raiz->dir;
-            free(raiz);
-            printf("Remoção realizada com sucesso!\n");
-        }else if(id < raiz->id){///O pacote procurado é menor
-            if(raiz->esq != NULL){
-                remover_abb(id, raiz->esq);
-            }else{
-                printf("Remocao invalida!\nPedido nao existente!");
-            }
-        }else if(id > raiz->id){///O pacote procurado é maior
-            if(raiz->dir != NULL){
-                remover_abb(id, raiz->dir);
-            }else{
-                printf("\nRemocao invalida!Pedido nao existente!");
-            }
-        }
-    }else{///A arvore está vazia
-        printf("Remocao invalida!\nArvore vazia");
-    }
+void insert_dados(){
+    
+    printf("gerando id:\n");
+    int id_gerado = identificador();
+    printf("Digite o nome do aluno:\n");
+    char * nome = malloc(sizeof(char));
+    scanf(" %[^\n]s", nome);
+    printf("matricula: \n");
+    int *matricula = malloc(sizeof(int));
+    scanf("%d", &matricula);
+    printf("Descrição: \n");
+    char * descricao = malloc(sizeof(char));
+    scanf(" %[^\n]s", descricao);
+    
+    add_abb(id_gerado,nome,matricula,descricao);
 
 }
+VERTICE* remover(VERTICE *raiz, int id) {
+    if(raiz == NULL){
+        printf("id nao encontrado!\n");
+        return NULL;
+    } else { 
+        if(raiz->id == id) {
+            
+            if(raiz->esq == NULL && raiz->dir == NULL) {
+                free(raiz);
+                printf("id removido: %d !\n", id);
+                return NULL;
+            }
+            else{
+               
+                if(raiz->esq != NULL && raiz->dir != NULL){
+                    VERTICE *aux = raiz->esq;
+                    while(aux->dir != NULL)
+                        aux = aux->dir;
+                    raiz->id = aux->id;
+                    aux->id = id;
+                    printf("id trocado: %d !\n", id);
+                    raiz->esq = remover(raiz->esq, id);
+                    return raiz;
+                }
+                else{
+                    
+                    VERTICE *aux;
+                    if(raiz->esq != NULL)
+                        aux = raiz->esq;
+                    else
+                        aux = raiz->dir;
+                    free(raiz);
+                    printf("id removido: %d !\n", id);
+                    return aux;
+                }
+            }
+        } else {
+            if(id < raiz->id)
+                raiz->esq = remover(raiz->esq, id);
+            else
+                raiz->dir = remover(raiz->dir, id);
+            return raiz;
+        }
+    }
+}
+
+
+
+
+
+
+
+
