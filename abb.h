@@ -78,16 +78,16 @@ void in_ordem(VERTICE *aux){
 }
 void insert_dados(){
     
-    printf("gerando id:\n");
+    printf("Gerando ID:\n");
     int id_gerado = identificador();
     printf("Digite o nome do aluno:\n");
-    char * nome = malloc(sizeof(char));
+    char * nome =(char * )malloc(100 * sizeof(char));
     scanf(" %[^\n]s", nome);
-    printf("matricula: \n");
+    printf("Matricula: \n");
     int *matricula = malloc(sizeof(int));
     scanf("%d", &matricula);
-    printf("Descrição: \n");
-    char * descricao = malloc(sizeof(char));
+    printf("Descricao: \n");
+    char * descricao = (char * )malloc(100 * sizeof(char));
     scanf(" %[^\n]s", descricao);
     
     add_abb(id_gerado,nome,matricula,descricao);
@@ -95,14 +95,14 @@ void insert_dados(){
 
 VERTICE* remover(VERTICE *raiz, int id) {
     if(raiz == NULL){
-        printf("id nao encontrado!\n");
+        printf("ID nao encontrado!\n");
         return NULL;
     } else { 
         if(raiz->id == id) {
             
             if(raiz->esq == NULL && raiz->dir == NULL) {
                 free(raiz);
-                printf("id removido: %d !\n", id);
+                printf("ID removido: %d !\n", id);
                 return NULL;
             }
             else{
@@ -112,7 +112,7 @@ VERTICE* remover(VERTICE *raiz, int id) {
                         aux = aux->dir;
                     raiz->id = aux->id;
                     aux->id = id;
-                    printf("id trocado: %d !\n", id);
+                    printf("ID trocado: %d !\n", id);
                     raiz->esq = remover(raiz->esq, id);
                     return raiz;
                 }
@@ -123,7 +123,7 @@ VERTICE* remover(VERTICE *raiz, int id) {
                     else
                         aux = raiz->dir;
                     free(raiz);
-                    printf("id removido: %d !\n", id);
+                    printf("ID removido: %d !\n", id);
                     return aux;
                 }
             }
