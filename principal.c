@@ -19,10 +19,8 @@ int main(){
               insert_dados();
               printf("\n");
        }else if(resp == 2){
-       
             system("clear");
             printf("------Remover encomenda------\n\n");
-            
             printf("\nDigite seu cpf: \n");
             char cpf[100];
             scanf("%s", &cpf);
@@ -33,7 +31,7 @@ int main(){
             if(retorno == 1){
                 in_ordem(raiz);
                 int id = 0;
-                printf("Digite o número do id a ser removido\n");
+                printf("Digite o número do id a ser removido: \n");
                 scanf("%d", &id);
                 inserir_na_fila(remover(raiz, id));
                 informa_complemento();
