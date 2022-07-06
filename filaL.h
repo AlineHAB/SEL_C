@@ -8,8 +8,14 @@ typedef struct pedido{
     char * nome_aluno;
     int *matricula;
     char * descricao;
-    int prioridade;
     
+    
+    
+    char *campus_doaluno;
+    char *campus_livro;
+    char *respon_encomenda;
+    int prioridade;
+        
 }PEDIDO;
 
 typedef struct no{
@@ -22,6 +28,31 @@ typedef struct no{
 No* inicio = NULL;
 No * fim = NULL;
 int tam = 0;
+
+
+
+void informa_complemento(){
+
+    printf("(aluno) Informe o seu campus: \n");
+    char *campus_doaluno = malloc(sizeof(char));
+    scanf("%[^\n]s", campus_doaluno);
+
+    printf("(Pedido) Informe o campus que o livro está: \n");
+    char *campus_livro = malloc(sizeof(char));
+    scanf("%[^\n]s", campus_livro);
+
+    printf("Responsavel pela encomenda: \n");
+    char *respon_encomenda = malloc(sizeof(char));
+    scanf("%[^\n]s", respon_encomenda);
+
+
+    printf("Prioridade de encomenda: \n");
+    int *prioridade = malloc(sizeof(int));
+
+    inserir_na_fila(prioridade);
+
+}
+
 
 void inserir_na_fila(VERTICE *encomenda){
     
@@ -41,8 +72,6 @@ void inserir_na_fila(VERTICE *encomenda){
         scanf("%d", novo->p->prioridade);
         novo->p = p;
         novo->prox = NULL;
-    
-    
         if(inicio == NULL){ 
             inicio = novo;
             fim = novo;
@@ -53,13 +82,11 @@ void inserir_na_fila(VERTICE *encomenda){
                 fim = novo;
                 tam++;
             }
-            
             else if (novo->p->prioridade == MAX_PRIORIDADE) {
                 novo -> prox = inicio;
                 inicio = novo;
                 tam++;
             }
-
             else {
                 No * aux = inicio;
                 for (int i = 0; i < tam - 1; i++) {
@@ -73,7 +100,6 @@ void inserir_na_fila(VERTICE *encomenda){
                     else {
                         aux = aux -> prox;
                     }
-
             }
         }
     }
@@ -92,9 +118,7 @@ void imprimir(){
 
 PEDIDO remover_fila(){
     PEDIDO pedido;
-        //remover!
         if(inicio != NULL){
-            
             No *lixo = inicio;
             inicio = inicio->prox;
             pedido.identificador = lixo->p->identificador;
@@ -106,8 +130,6 @@ PEDIDO remover_fila(){
             if(tam == 1){
                 inicio == NULL;
                 fim = NULL;
-            
-            
             }
         }
     return pedido;
