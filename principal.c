@@ -15,23 +15,14 @@ int main(){
         scanf("%d", &resp);
         if(resp == 1){
             
-              system("cls");
+              system("clear");
               insert_dados();
               printf("\n\n");
-//-----------------------------------------------------------------------------------
+
 
        }else if(resp == 2){
-            //remover uma encomenda de livro da ABB (id)
-            //para remover eu preciso:
-            //1 - visualizar as encomendas (in_ordem)
-            
-            system("cls");
+            system("clear");
             in_ordem(raiz);
-            
-           
-            
-            
-            //2 - verificar o usuario
             printf(" Digite seu cpf:\n");
             char cpf[100];
             scanf("%s", &cpf);
@@ -40,7 +31,6 @@ int main(){
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
             if(retorno == 1){
-                //3 - chama a funcao remover_abb por id (CADE ESSA FUNCAO?)
                 int id = 0;
                 printf("Digite o número do id a ser removido\n");
                 scanf("%d", &id);
@@ -48,8 +38,6 @@ int main(){
                 //4 - setar novos dados (faltando)
                 //5 - add_fila(....);
         }else if(resp == 3){
-               
-                //2 - verificar o usuario
             printf(" Digite seu cpf:\n");
             char cpf[100];
             scanf("%s", &cpf);
@@ -58,7 +46,6 @@ int main(){
             scanf("%s", &senha);
             int retorno = verificador_transportador(cpf, senha);
             if(retorno == 1){
-                //remover da fila de prioridade
                 remover_fila();
                 printf("Pedido removido com sucesso!\n");
                 }
