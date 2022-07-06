@@ -1,5 +1,6 @@
 #include "abb.h"
-#include "fila.h"
+#include "filaL.h"
+#include "sec_e_transp.h"
 
 
 int main(){
@@ -31,14 +32,14 @@ int main(){
             
             
             //2 - verificar o usuario
-            //printf(" Digite seu cpf:\n");
-            //char cpf[100];
-            //scanf("%s", &cpf);
-            //printf(" Digite sua senha:\n");
-            //char senha[100];
-            //scanf("%s", &senha);
-            //int retorno = verificar(cpf, senha);
-            //if(retorno == 1){
+            printf(" Digite seu cpf:\n");
+            char cpf[100];
+            scanf("%s", &cpf);
+            printf(" Digite sua senha:\n");
+            char senha[100];
+            scanf("%s", &senha);
+            int retorno = verificador_secretario(cpf, senha);
+            if(retorno == 1){
                 //3 - chama a funcao remover_abb por id (CADE ESSA FUNCAO?)
                 int id = 0;
                 printf("Digite o número do id a ser removido\n");
@@ -46,20 +47,22 @@ int main(){
                 remover(raiz, id);
                 //4 - setar novos dados (faltando)
                 //5 - add_fila(....);
-            /*}else if(resp == 3){
+        }else if(resp == 3){
                
                 //2 - verificar o usuario
-                    printf(" Digite seu cpf:\n");
-                    char cpf[100];
-                    scanf("%s", &cpf);
-                    printf(" Digite sua senha:\n");
-                    char senha[100];
-                    scanf("%s", &senha);
-                    //int retorno = verificar(cpf, senha);
-                    if(retorno == 1){
-                        //remover da fila de prioridade
-                    }
-            }*/
+            printf(" Digite seu cpf:\n");
+            char cpf[100];
+            scanf("%s", &cpf);
+            printf(" Digite sua senha:\n");
+            char senha[100];
+            scanf("%s", &senha);
+            int retorno = verificador_transportador(cpf, senha);
+            if(retorno == 1){
+                //remover da fila de prioridade
+                remover_fila();
+                printf("Pedido removido com sucesso!\n");
+                }
+            }
         
         }
         
