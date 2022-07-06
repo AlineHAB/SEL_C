@@ -44,7 +44,7 @@ int main(){
                 int id = 0;
                 printf("Digite o número do id a ser removido\n");
                 scanf("%d", &id);
-                remover(raiz, id);
+                inserir_na_fila(remover(raiz, id));
                 //4 - setar novos dados (faltando)
                 //5 - add_fila(....);
         }else if(resp == 3){

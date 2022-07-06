@@ -6,7 +6,7 @@
 typedef struct pedido{
     int identificador;
     char * nome_aluno;
-    int matricula;
+    int *matricula;
     char * descricao;
     int prioridade;
     
@@ -15,8 +15,7 @@ typedef struct pedido{
 typedef struct no{
    
     PEDIDO *p;
-    
-   
+    char *nomecampuslivro, *nomecampusaluno;
     struct no * prox;
 }No;
 
@@ -24,17 +23,22 @@ No* inicio = NULL;
 No * fim = NULL;
 int tam = 0;
 
-void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * descricao, int prioridade){
+void inserir_na_fila(VERTICE *encomenda){
     
         PEDIDO * p = malloc(sizeof(PEDIDO));
-
-        p->identificador = identificador;
-        p->nome_aluno = nome_aluno;
-        p->matricula = matricula;
-        p->descricao = descricao;
-        p->prioridade = prioridade;
         
+        p->identificador = encomenda->id;
+        p->nome_aluno = encomenda->nome_aluno;
+        p->matricula = encomenda->matricula;
+        p->descricao = encomenda->descricao;
+     
         No * novo = malloc(sizeof(No));
+        printf("insira o campus do livro: \n");
+        scanf("%s", novo->nomecampuslivro);
+        printf("insira o campus do aluno: \n");
+        scanf("%s", novo->nomecampusaluno);
+        printf("insira a prioridade do pedido: \n");
+        scanf("%d", novo->p->prioridade);
         novo->p = p;
         novo->prox = NULL;
     
@@ -50,7 +54,7 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
                 tam++;
             }
             
-            else if (prioridade == MAX_PRIORIDADE) {
+            else if (novo->p->prioridade == MAX_PRIORIDADE) {
                 novo -> prox = inicio;
                 inicio = novo;
                 tam++;
@@ -59,7 +63,7 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
             else {
                 No * aux = inicio;
                 for (int i = 0; i < tam - 1; i++) {
-                    if (prioridade > aux -> prox -> p -> prioridade) {
+                    if (novo->p->prioridade > aux -> prox -> p -> prioridade) {
                         novo -> prox = aux -> prox;
                         //novo -> prox = aux -> prox;
                         aux -> prox = novo;
@@ -79,7 +83,9 @@ void inserir_na_fila(int identificador, char *nome_aluno,int matricula, char * d
 void imprimir(){
     No * aux = inicio;
     for(int i = 0; i < tam; i++){
-        printf("Identificador: %d\n", aux->p->identificador);
+        printf("identificador: %s\n", aux->p->identificador);
+        printf("nome do aluno: %s\n", aux->p->nome_aluno);
+        printf("livro: %s\n", aux->p->descricao);
             aux = aux->prox;
     }
 }
@@ -106,5 +112,4 @@ PEDIDO remover_fila(){
         }
     return pedido;
 }
-
 

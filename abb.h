@@ -5,9 +5,9 @@ typedef struct Vertice{
     
     int id; 
     char * nome_aluno;
-    int matricula;
+    int *matricula;
     char * descricao;
-   
+    
     struct Vertice * esq;
     struct Vertice * dir;
 }VERTICE;
@@ -43,7 +43,7 @@ VERTICE* buscar(int id, VERTICE *aux){
 }
 
 
-void add_abb(int id, char *nome_aluno, int matricula, char *descricao){
+void add_abb(int id, char *nome_aluno, int *matricula, char *descricao){
 
     VERTICE* aux = buscar(id, raiz);
     
