@@ -19,10 +19,10 @@ int main(){
        }else if(resp == 2){
             system("clear");
             in_ordem(raiz);
-            printf(" Digite seu cpf: ");
+            printf("\nDigite seu cpf: \n");
             char cpf[100];
             scanf("%s", &cpf);
-            printf(" Digite sua senha: \n");
+            printf("\nDigite sua senha: \n");
             char senha[100];
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
@@ -34,10 +34,10 @@ int main(){
                 informa_complemento();
                 //5 - add_fila(....);
         }else if(resp == 3){
-            printf(" Digite seu cpf:\n");
+            printf("Digite seu cpf: \n");
             char cpf[100];
             scanf("%s", &cpf);
-            printf(" Digite sua senha:\n");
+            printf("Digite sua senha: \n");
             char senha[100];
             scanf("%s", &senha);
             int retorno = verificador_transportador(cpf, senha);
