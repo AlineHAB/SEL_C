@@ -53,6 +53,7 @@ int verificador_transportador(char cpf[100], char senha[100]) {
         for (int i = 0; i < sectr_tam; i++) {
             if (strcmp(aux -> cpf, cpf) == 0 && strcmp(aux -> senha, senha) == 0  && aux -> identificador == 2) {
                 return 1;
+                break;
             }
 
             else {
