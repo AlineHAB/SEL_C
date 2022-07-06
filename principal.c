@@ -14,12 +14,8 @@ int main(){
         printf("Digite a funcionalidade desejada:");
         scanf("%d", &resp);
         if(resp == 1){
-            
-              system("clear");
               insert_dados();
               printf("\n\n");
-
-
        }else if(resp == 2){
             system("clear");
             in_ordem(raiz);
