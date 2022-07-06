@@ -35,7 +35,6 @@ int main(){
                 scanf("%d", &id);
                 inserir_na_fila(remover(raiz, id));
                 informa_complemento();
-                //5 - add_fila(....);
         }else if(resp == 3){
             system("clear");
             printf("------Remover pedido------\n\n");
