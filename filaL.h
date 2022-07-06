@@ -104,7 +104,6 @@ void imprimir(){
 
 PEDIDO remover_fila(){
     PEDIDO pedido;
-        //remover!
         if(inicio != NULL){
 
             No *lixo = inicio;
