@@ -11,18 +11,18 @@ int main(){
         printf(" 2 - Remover uma encomenda de livro.\n");
         printf(" 3 - Remover um pedido de livro.\n");
         printf(" 0 - Sair do sistema!\n");
-        printf("Digite a funcionalidade desejada:");
+        printf("Digite a funcionalidade desejada: ");
         scanf("%d", &resp);
         if(resp == 1){
               insert_dados();
-              printf("\n\n");
+              printf("\n");
        }else if(resp == 2){
             system("clear");
             in_ordem(raiz);
-            printf(" Digite seu cpf:\n");
+            printf(" Digite seu cpf: ");
             char cpf[100];
             scanf("%s", &cpf);
-            printf(" Digite sua senha:\n");
+            printf(" Digite sua senha: \n");
             char senha[100];
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
