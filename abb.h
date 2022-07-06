@@ -68,10 +68,10 @@ void in_ordem(VERTICE *aux){
     if(aux->esq != NULL){
         in_ordem(aux->esq);
     }
-    printf("%d \n", aux->id);
-    printf("%s \n", aux->nome_aluno);
-    printf("%d \n", aux->matricula);
-    printf("%s \n", aux->descricao);
+    printf("%d\n", aux->id);
+    printf("%s\n", aux->nome_aluno);
+    printf("%d\n", aux->matricula);
+    printf("%s\n", aux->descricao);
     if(aux->dir != NULL){
         in_ordem(aux->dir);
         }
