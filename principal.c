@@ -14,11 +14,15 @@ int main(){
         printf("Digite a funcionalidade desejada: ");
         scanf("%d", &resp);
         if(resp == 1){
+              system("clear");
+              printf("------Encomendar livro------\n\n");
               insert_dados();
               printf("\n");
        }else if(resp == 2){
+       
             system("clear");
-            in_ordem(raiz);
+            printf("------Remover encomenda------\n\n");
+            
             printf("\nDigite seu cpf: \n");
             char cpf[100];
             scanf("%s", &cpf);
@@ -27,6 +31,7 @@ int main(){
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
             if(retorno == 1){
+                in_ordem(raiz);
                 int id = 0;
                 printf("Digite o número do id a ser removido\n");
                 scanf("%d", &id);
@@ -34,6 +39,8 @@ int main(){
                 informa_complemento();
                 //5 - add_fila(....);
         }else if(resp == 3){
+            system("clear");
+            printf("------Remover pedido------\n\n");
             printf("Digite seu cpf: \n");
             char cpf[100];
             scanf("%s", &cpf);
