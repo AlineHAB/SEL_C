@@ -79,7 +79,6 @@ void inserir_na_fila(VERTICE *encomenda){
                 for (int i = 0; i < tam - 1; i++) {
                     if (novo->p->prioridade > aux -> prox -> p -> prioridade) {
                         novo -> prox = aux -> prox;
-                        //novo -> prox = aux -> prox;
                         aux -> prox = novo;
                         tam++;
                         break;
