@@ -35,7 +35,7 @@ int main(){
                 printf("Digite o número do id a ser removido\n");
                 scanf("%d", &id);
                 inserir_na_fila(remover(raiz, id));
-                //4 - setar novos dados (faltando)
+                informa_complemento();
                 //5 - add_fila(....);
         }else if(resp == 3){
             printf(" Digite seu cpf:\n");
