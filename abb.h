@@ -1,8 +1,6 @@
 #include "Identificador.h"
 
 typedef struct Vertice{
-   
-    
     int id; 
     char * nome_aluno;
     int *matricula;
@@ -13,11 +11,6 @@ typedef struct Vertice{
 }VERTICE;
 
 VERTICE * raiz = NULL;
-
-
-
-
-
 
 VERTICE* buscar(int id, VERTICE *aux){
     
@@ -41,7 +34,6 @@ VERTICE* buscar(int id, VERTICE *aux){
         return NULL;
     }
 }
-
 
 void add_abb(int id, char *nome_aluno, int *matricula, char *descricao){
 
@@ -71,7 +63,6 @@ void add_abb(int id, char *nome_aluno, int *matricula, char *descricao){
     }
 }
 
-
 void in_ordem(VERTICE *aux){
     
     if(aux->esq != NULL){
@@ -100,8 +91,8 @@ void insert_dados(){
     scanf(" %[^\n]s", descricao);
     
     add_abb(id_gerado,nome,matricula,descricao);
-
 }
+
 VERTICE* remover(VERTICE *raiz, int id) {
     if(raiz == NULL){
         printf("id nao encontrado!\n");
@@ -115,7 +106,6 @@ VERTICE* remover(VERTICE *raiz, int id) {
                 return NULL;
             }
             else{
-               
                 if(raiz->esq != NULL && raiz->dir != NULL){
                     VERTICE *aux = raiz->esq;
                     while(aux->dir != NULL)
@@ -127,7 +117,6 @@ VERTICE* remover(VERTICE *raiz, int id) {
                     return raiz;
                 }
                 else{
-                    
                     VERTICE *aux;
                     if(raiz->esq != NULL)
                         aux = raiz->esq;
