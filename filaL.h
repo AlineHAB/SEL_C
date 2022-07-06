@@ -8,18 +8,17 @@ typedef struct pedido{
     char * nome_aluno;
     int *matricula;
     char * descricao;
-    
-    
-    
+
     char *campus_doaluno;
     char *campus_livro;
     char *respon_encomenda;
+
     int prioridade;
-        
+
 }PEDIDO;
 
 typedef struct no{
-   
+
     PEDIDO *p;
     char *nomecampuslivro, *nomecampusaluno;
     struct no * prox;
@@ -30,49 +29,36 @@ No * fim = NULL;
 int tam = 0;
 
 
-
 void informa_complemento(){
 
     printf("(aluno) Informe o seu campus: \n");
     char *campus_doaluno = malloc(sizeof(char));
-    scanf("%[^\n]s", campus_doaluno);
+    scanf(" %[^\n]s", campus_doaluno);
 
     printf("(Pedido) Informe o campus que o livro está: \n");
     char *campus_livro = malloc(sizeof(char));
-    scanf("%[^\n]s", campus_livro);
+    scanf(" %[^\n]s", campus_livro);
 
     printf("Responsavel pela encomenda: \n");
     char *respon_encomenda = malloc(sizeof(char));
-    scanf("%[^\n]s", respon_encomenda);
-
-
-    printf("Prioridade de encomenda: \n");
-    int *prioridade = malloc(sizeof(int));
-
-    inserir_na_fila(prioridade);
-
+    scanf(" %[^\n]s", respon_encomenda);
+    
 }
 
-
 void inserir_na_fila(VERTICE *encomenda){
-    
+
         PEDIDO * p = malloc(sizeof(PEDIDO));
-        
-        p->identificador = encomenda->id;
-        p->nome_aluno = encomenda->nome_aluno;
-        p->matricula = encomenda->matricula;
-        p->descricao = encomenda->descricao;
-     
+
+        informa_complemento();
+
         No * novo = malloc(sizeof(No));
-        printf("insira o campus do livro: \n");
-        scanf("%s", novo->nomecampuslivro);
-        printf("insira o campus do aluno: \n");
-        scanf("%s", novo->nomecampusaluno);
+
         printf("insira a prioridade do pedido: \n");
         scanf("%d", novo->p->prioridade);
         novo->p = p;
         novo->prox = NULL;
-        if(inicio == NULL){ 
+
+        if(inicio == NULL){
             inicio = novo;
             fim = novo;
             tam++;
@@ -82,6 +68,7 @@ void inserir_na_fila(VERTICE *encomenda){
                 fim = novo;
                 tam++;
             }
+
             else if (novo->p->prioridade == MAX_PRIORIDADE) {
                 novo -> prox = inicio;
                 inicio = novo;
@@ -96,7 +83,7 @@ void inserir_na_fila(VERTICE *encomenda){
                         aux -> prox = novo;
                         tam++;
                         break;
-                    } 
+                    }
                     else {
                         aux = aux -> prox;
                     }
@@ -118,7 +105,9 @@ void imprimir(){
 
 PEDIDO remover_fila(){
     PEDIDO pedido;
+        //remover!
         if(inicio != NULL){
+
             No *lixo = inicio;
             inicio = inicio->prox;
             pedido.identificador = lixo->p->identificador;
