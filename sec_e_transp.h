@@ -26,7 +26,7 @@ SEC_TR * sectr_fim = &transp5;
 int sectr_tam = 8;
 
 int verificador_secretario(char cpf[100], char senha[100]) {
-    if (strcmp(sec1.cpf, cpf) == 0 && strcmp(sec2.senha, senha) == 0 && sec1.identificador == 1) {
+    if (strcmp(sec1.cpf, cpf) == 0 && strcmp(sec1.senha, senha) == 0 && sec1.identificador == 1) {
         return 1;
     }
 
