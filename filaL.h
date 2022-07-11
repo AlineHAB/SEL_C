@@ -113,6 +113,7 @@ PEDIDO remover_fila(){
             pedido.matricula = lixo->p->matricula;
             pedido.descricao = lixo->p->descricao;
             free(lixo);
+            imprimir();
             tam--;
             if(tam == 1){
                 inicio = NULL;
