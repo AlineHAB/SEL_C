@@ -1,5 +1,4 @@
 #include "abb.h"
-#include "filaL.h"
 #include "sec_e_transp.h"
 
 
@@ -28,13 +27,16 @@ int main(){
             char senha[100];
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
-            if(retorno == 1){
+            if(retorno == 1){ //secretario ..
+                                //remover dar arvore
+                                //setar novos valores a encomenda
+                                //adicionar na fila
                 in_ordem(raiz);
                 int id = 0;
                 printf("Digite o número do id a ser removido: \n");
                 scanf("%d", &id);
-                inserir_na_fila(remover(raiz, id));
-                informa_complemento();
+                raiz = remover(raiz, id);
+            }
         }else if(resp == 3){
             system("clear");
             printf("------Remover pedido------\n\n");
@@ -53,7 +55,7 @@ int main(){
         
         }
         
-    }
+    
     
     return 0;
 }
