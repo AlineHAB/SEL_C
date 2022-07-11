@@ -27,10 +27,7 @@ int main(){
             char senha[100];
             scanf("%s", &senha);
             int retorno = verificador_secretario(cpf, senha);
-            if(retorno == 1){ //secretario ..
-                                //remover dar arvore
-                                //setar novos valores a encomenda
-                                //adicionar na fila
+            if(retorno == 1){ 
                 in_ordem(raiz);
                 int id = 0;
                 printf("Digite o número do id a ser removido: \n");
