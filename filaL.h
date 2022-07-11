@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #define MAX_PRIORIDADE 100
 
+typedef struct Vertice{
+    int id;
+    char * nome_aluno;
+    int *matricula;
+    char * descricao;
+    
+    struct Vertice * esq;
+    struct Vertice * dir;
+}VERTICE;
+
 
 typedef struct pedido{
     int identificador;
@@ -29,32 +39,30 @@ No * fim = NULL;
 int tam = 0;
 
 
-void informa_complemento(){
-
-    printf("(aluno) Informe o seu campus: \n");
-    char *campus_doaluno = malloc(sizeof(char));
-    scanf(" %[^\n]s", campus_doaluno);
-
-    printf("(Pedido) Informe o campus que o livro está: \n");
-    char *campus_livro = malloc(sizeof(char));
-    scanf(" %[^\n]s", campus_livro);
-
-    printf("Responsavel pela encomenda: \n");
-    char *respon_encomenda = malloc(sizeof(char));
-    scanf(" %[^\n]s", respon_encomenda);
-    
-}
-
 void inserir_na_fila(VERTICE *encomenda){
 
         PEDIDO * p = malloc(sizeof(PEDIDO));
+    
+        p->nome_aluno = encomenda->nome_aluno;
+        //mesma coisa para matricula e para descricao...
+    
+        printf("(aluno) Informe o seu campus: \n");
+        p->campus_doaluno = malloc(sizeof(char));
+        scanf(" %[^\n]s", p->campus_doaluno);
+        
+        printf("(Pedido) Informe o campus que o livro está: \n");
+        p->campus_livro = malloc(sizeof(char));
+        scanf(" %[^\n]s", p->campus_livro);
 
-        informa_complemento();
-
+        printf("Responsavel pela encomenda: \n");
+        p->respon_encomenda = malloc(sizeof(char));
+        scanf(" %[^\n]s", p->respon_encomenda);
+    
+        printf("Insira a prioridade do pedido: \n");
+        scanf("%d", &p->prioridade);
+    
         No * novo = malloc(sizeof(No));
-
-        printf("insira a prioridade do pedido: \n");
-        scanf("%d", novo->p->prioridade);
+        novo->p = malloc(sizeof(PEDIDO));
         novo->p = p;
         novo->prox = NULL;
 
@@ -62,34 +70,27 @@ void inserir_na_fila(VERTICE *encomenda){
             inicio = novo;
             fim = novo;
             tam++;
-        }else{
-            if (novo -> p -> prioridade == 0) {
+        }else if (novo->p->prioridade < fim-p->prioridade) {
                 fim -> prox = novo;
                 fim = novo;
                 tam++;
-            }
-
-            else if (novo->p->prioridade == MAX_PRIORIDADE) {
+            }else if (novo->p->prioridade > inicio->p->prioridade) {
                 novo -> prox = inicio;
                 inicio = novo;
                 tam++;
             }
-            else {
+            else{
                 No * aux = inicio;
-                for (int i = 0; i < tam - 1; i++) {
-                    if (novo->p->prioridade > aux -> prox -> p -> prioridade) {
-                        novo -> prox = aux -> prox;
-                        aux -> prox = novo;
-                        tam++;
-                        break;
-                    }
-                    else {
-                        aux = aux -> prox;
-                    }
+                while(aux->prox != NULL && novo->p->prioridade < aux->prox->p-> prioridade) {
+                    aux = aux->prox;
+                }
+                   //novo->prox = aux -> prox;
+                   //aux -> prox = novo;
+                   //tam++;
             }
-        }
-    }
 }
+
+
 
 
 void imprimir(){
@@ -115,7 +116,7 @@ PEDIDO remover_fila(){
             free(lixo);
             tam--;
             if(tam == 1){
-                inicio == NULL;
+                inicio = NULL;
                 fim = NULL;
             }
         }
