@@ -44,7 +44,8 @@ void inserir_na_fila(VERTICE *encomenda){
         PEDIDO * p = malloc(sizeof(PEDIDO));
     
         p->nome_aluno = encomenda->nome_aluno;
-        //mesma coisa para matricula e para descricao...
+        p->matricula =  encomenda->matricula;
+        p->descricao = encomenda->descricao;
     
         printf("(aluno) Informe o seu campus: \n");
         p->campus_doaluno = malloc(sizeof(char));
@@ -84,13 +85,11 @@ void inserir_na_fila(VERTICE *encomenda){
                 while(aux->prox != NULL && novo->p->prioridade < aux->prox->p-> prioridade) {
                     aux = aux->prox;
                 }
-                   //novo->prox = aux -> prox;
-                   //aux -> prox = novo;
-                   //tam++;
+                novo->prox = aux -> prox;
+                aux -> prox = novo;
+                tam++;
             }
 }
-
-
 
 
 void imprimir(){
