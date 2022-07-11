@@ -1,14 +1,6 @@
 #include "Identificador.h"
+#include "filaL.h"
 
-typedef struct Vertice{
-    int id; 
-    char * nome_aluno;
-    int *matricula;
-    char * descricao;
-    
-    struct Vertice * esq;
-    struct Vertice * dir;
-}VERTICE;
 
 VERTICE * raiz = NULL;
 
@@ -97,15 +89,22 @@ VERTICE* remover(VERTICE *raiz, int id) {
     if(raiz == NULL){
         printf("ID nao encontrado!\n");
         return NULL;
-    } else { 
-        if(raiz->id == id) {
+    }else{
+        if(id < raiz->id){
+                raiz->esq = remover(raiz->esq, id);
+        }else if(id > raiz->id){
+                raiz->dir = remover(raiz->dir, id);
+        }else{
+    
+           
+            inserir_na_fila(raiz);
+            
             
             if(raiz->esq == NULL && raiz->dir == NULL) {
                 free(raiz);
                 printf("ID removido: %d! \n", id);
-                return NULL;
-            }
-            else{
+                
+            }else{
                 if(raiz->esq != NULL && raiz->dir != NULL){
                     VERTICE *aux = raiz->esq;
                     while(aux->dir != NULL)
@@ -114,26 +113,20 @@ VERTICE* remover(VERTICE *raiz, int id) {
                     aux->id = id;
                     printf("ID trocado: %d! \n", id);
                     raiz->esq = remover(raiz->esq, id);
-                    return raiz;
+                    
                 }
                 else{
-                    VERTICE *aux;
                     if(raiz->esq != NULL)
-                        aux = raiz->esq;
+                        raiz = raiz->esq;
                     else
-                        aux = raiz->dir;
+                        raiz = raiz->dir;
                     free(raiz);
                     printf("ID removido: %d! \n", id);
-                    return aux;
+                
                 }
             }
-        } else {
-            if(id < raiz->id)
-                raiz->esq = remover(raiz->esq, id);
-            else
-                raiz->dir = remover(raiz->dir, id);
-            return raiz;
         }
+        return raiz;
     }
 }
 
