@@ -85,48 +85,48 @@ void insert_dados(){
     add_abb(id_gerado,nome,matricula,descricao);
 }
 
-VERTICE* remover(VERTICE *raiz, int id) {
-    if(raiz == NULL){
+VERTICE* remover(VERTICE *novo, int id) {
+    if(novo == NULL){
         printf("ID nao encontrado!\n");
         return NULL;
     }else{
-        if(id < raiz->id){
-                raiz->esq = remover(raiz->esq, id);
-        }else if(id > raiz->id){
-                raiz->dir = remover(raiz->dir, id);
+        if(id < novo->id){
+                novo->esq = remover(novo->esq, id);
+        }else if(id > novo ->id){
+                novo->dir = remover(novo->dir, id);
         }else{
     
-           
-            inserir_na_fila(raiz);
+            
+            inserir_na_fila(novo);
             
             
-            if(raiz->esq == NULL && raiz->dir == NULL) {
-                free(raiz);
+            if(novo->esq == NULL && novo->dir == NULL) {
+                free(novo);
                 printf("ID removido: %d! \n", id);
                 
             }else{
-                if(raiz->esq != NULL && raiz->dir != NULL){
-                    VERTICE *aux = raiz->esq;
+                if(novo->esq != NULL && novo->dir != NULL){
+                    VERTICE *aux = novo->esq;
                     while(aux->dir != NULL)
                         aux = aux->dir;
-                    raiz->id = aux->id;
+                    novo->id = aux->id;
                     aux->id = id;
                     printf("ID trocado: %d! \n", id);
-                    raiz->esq = remover(raiz->esq, id);
+                    novo->esq = remover(novo->esq, id);
                     
                 }
                 else{
-                    if(raiz->esq != NULL)
-                        raiz = raiz->esq;
+                    if(novo->esq != NULL)
+                        novo = novo->esq;
                     else
-                        raiz = raiz->dir;
-                    free(raiz);
+                        novo = novo->dir;
+                    free(novo);
                     printf("ID removido: %d! \n", id);
                 
                 }
             }
         }
-        return raiz;
+        return novo;
     }
 }
 
