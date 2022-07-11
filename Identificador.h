@@ -11,13 +11,11 @@ int identificador(){
 
     sort_id = rand()%9;
     if (sort_id % 2 == 0){
-      id = 1000 + rand()%5000;
-      printf("%d\n", id);
+          id = 1000 + rand()%5000;
+          printf("%d\n", id);
     }else {
-      id = 5000 + rand()%5000;
-      printf("%d\n", id);
+          id = 5000 + rand()%5000;
+          printf("%d\n", id);
     }
-
    return id;
-
 }
